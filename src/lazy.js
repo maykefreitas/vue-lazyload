@@ -389,7 +389,7 @@ export default function (Vue) {
         src = listener.loading
       } else if (state === 'error' && listener.error) {
         src = listener.error
-      } else if (state === 'error' || listener.src) {
+      } else if (listener.src) {
         src = listener.src
       }
 
