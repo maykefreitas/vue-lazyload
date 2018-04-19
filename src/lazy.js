@@ -39,8 +39,8 @@ export default function (Vue) {
         throttleWait: throttleWait || 200,
         preLoad: preLoad || 1.3,
         preLoadTop: preLoadTop || 0,
-        error: (error === false || error) || DEFAULT_URL,
-        loading: (loading === false || loading) || DEFAULT_URL,
+        error: error === false ? false : (error || DEFAULT_URL),
+        loading: loading === false ? false : (loading || DEFAULT_URL),
         attempt: attempt || 3,
         scale: scale || getDPR(scale),
         ListenEvents: listenEvents || DEFAULT_EVENTS,
@@ -426,8 +426,8 @@ export default function (Vue) {
       if (isObject(value)) {
         if (!value.src && !this.options.silent) console.error('Vue Lazyload warning: miss src with ' + value)
         src = value.src
-        loading = value.loading || this.options.loading
-        error = value.error || this.options.error
+        loading = value.loading === false ? false : (value.loading || this.options.loading)
+        error = value.error === false ? false : (value.error || this.options.error)
       }
       return {
         src,
