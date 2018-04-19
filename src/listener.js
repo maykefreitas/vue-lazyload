@@ -116,6 +116,10 @@ export default class ReactiveListener {
    * @return
    */
   renderLoading (cb) {
+    if (!this.loading) {
+      return cb()
+    }
+
     loadImageAsync({
       src: this.loading
     }, data => {
